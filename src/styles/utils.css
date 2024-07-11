@@ -1,0 +1,171 @@
+.text-x-small {
+  font-size: 0.8rem;
+}
+.text-small {
+  font-size: 0.9rem;
+}
+.text-lead {
+  font-size: 1rem;
+}
+.text-lead-plus {
+  font-size: 1.1rem;
+}
+.text-medium {
+  font-size: 1.2rem;
+}
+.text-medium-plus {
+  font-size: 1.3rem;
+}
+.text-large {
+  font-size: 1.5rem;
+}
+.text-large-plus {
+  font-size: 1.7rem;
+}
+.text-very-large {
+  font-size: 1.8rem;
+}
+.text-very-large-plus {
+  font-size: 2rem;
+}
+.t .text-dark-600 {
+  color: #555;
+}
+.gap-03 {
+  gap: 3px;
+}
+.gap-4 {
+  gap: 30px;
+}
+.gap-5 {
+  gap: 40px;
+}
+
+.place-content-center {
+  place-content: center;
+}
+.border-right-light-gray {
+  border-right: 1px solid lightgray !important;
+}
+
+.border-light-gray {
+  border: 1px solid lightgray !important;
+}
+.border-left-none {
+  border-left: none !important;
+}
+.border-right-none {
+  border-right: none !important;
+}
+.border-radius-2 {
+  border-radius: 2px;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+.image-large {
+  height: 180px;
+  width: 180px;
+  object-fit: cover;
+}
+.image-medium {
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+}
+.image-medium-plus {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+}
+.image-small {
+  height: 50px;
+  width: 50;
+  object-fit: cover;
+}
+
+.bg-light-gray {
+  background: #f5f5f5;
+}
+.bg-white-smoke {
+  background-color: #f5f5f5 !important;
+}
+.text-light-gray {
+  color: rgb(144, 139, 139);
+}
+.text-dark-gray {
+  color: darkgray;
+}
+.text-line-through {
+  text-decoration: line-through;
+}
+.mb-05 {
+  margin-bottom: 5px;
+}
+.mbc-1 {
+  margin-bottom: 2px;
+}
+.pyc-3 {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.hover_link_style:hover {
+  text-decoration: none;
+}
+.border-none {
+  border: none !important;
+}
+.box-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.box-shadow-small {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.bg-off-white {
+  background: #fafafa;
+}
+.pyc-5 {
+  padding-top: 35px !important;
+  padding-bottom: 35px !important;
+}
+.icon-lead {
+  font-size: 20px;
+}
+.icon-large {
+  font-size: 40px;
+}
+
+.line-height-12 {
+  line-height: 1.2;
+}
+.h-1 {
+  height: 10px;
+}
+.h-2 {
+  height: 20px;
+}
+.h-4 {
+  height: 40px;
+}
+.w-5 {
+  width: 50px;
+}
+.w-10 {
+  width: 10% !important;
+}
+.card {
+  padding: 20px;
+}
+.content-center {
+  display: grid;
+  place-items: center;
+}
+.flex-end {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}

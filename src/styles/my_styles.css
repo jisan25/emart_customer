@@ -1,0 +1,35 @@
+@import url("./utils.css");
+
+:root {
+  --primary: #13778a;
+  --primary-hover: #095463;
+  --primary-light: #89bbc5;
+
+  --font-family-sans-serif: "Poppins", sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+p {
+  margin-bottom: 5px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+h4,
+h5 {
+  margin-bottom: 0px !important;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 8px;
+  object-fit: contain;
+  border: 1px solid lightgray;
+}
+
+.border-primary {
+  border: 1px solid var(--primary) !important;
+}

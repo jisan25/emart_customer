@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("./my_styles.css");
+:root {
+  --primary: #13778a;
+  --primary-hover: #095463;
+  --primary-light: #89bbc5;
+
+  --font-family-sans-serif: "Poppins", sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.gap-3 {
+  gap: 15px;
+}
+.gap-2 {
+  gap: 10px;
+}
+.gap-1 {
+  gap: 5px;
+}
+.text-lg {
+  font-size: 2.5rem;
+}
+.category_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.category .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 233px;
+  height: 200px;
+  display: grid;
+  place-content: center;
+}
+.products .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.bg-primary-light {
+  background-color: var(--primary-light) !important;
+}
+
+.pl-c-4 {
+  padding-left: 35px;
+}
+.product_image {
+  height: 250px;
+  object-fit: cover;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+.products .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 420px;
+}
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 0 0.2rem rgba(183, 138, 135, 0.5);
+}
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #212529;
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.search-results {
+  z-index: 100;
+  width: 96% !important;
+  margin-top: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+.search-result-item {
+  cursor: pointer;
+}
+.search-result-item:hover {
+  color: var(--primary) !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.modal-dialog {
+  max-width: 400px;
+  margin: 1.75rem auto;
+}
+.modal-dialog.modal-lg {
+  max-width: 800px;
+  margin: 1.75rem auto;
+}
+.list-style-none {
+  list-style: none;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: var(--primary);
+}
+.nav-pills {
+  border: 1px solid lightgray;
+}
+.my_profile p {
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+.my_profile h5 {
+  font-size: 18px;
+}
+.my_profile .col-lg-4 {
+  margin-bottom: 10px;
+}
+
+.form-control {
+  border: 1px solid lightgray;
+}
+.form-control:focus {
+  border-color: var(--primary);
+}
+.delivery_histroy p {
+  margin-bottom: 5px;
+}
+.delivery_histroy .col-lg-10 .d-flex {
+  justify-content: start;
+}
+.total_summary p {
+  margin-bottom: 2px;
+  color: #333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.product_quantity {
+  width: 40px;
+}
+.product .col-md-9 {
+  flex: 0 0 74% !important;
+  max-width: 74% !important;
+}
+.badge-primary {
+  color: #fff;
+  background-color: var(--primary);
+}
+.border-primary-1 {
+  border: 1px solid var(--primary) !important;
+}
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
