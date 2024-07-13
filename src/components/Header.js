@@ -6,21 +6,29 @@ import { backendUrl } from "@/helpers/CommonHelper";
 import LoginModal from "./Auth/LoginModal";
 import Link from "next/link";
 import { fetchUserData, logout } from "@/utils/auth";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "@/store/auth/authAtom";
 import { useRouter } from "next/router";
 import SignUpModal from "./Auth/SignUpModal";
+import {
+  cartItemCountAtom,
+  showOrderDetailsAtom,
+} from "@/store/frontend/frontendAtom";
 
 const Header = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const setShowOrderDetails = useSetAtom(showOrderDetailsAtom);
+
   const [user, setUser] = useAtom(userAtom);
   const [dashboardLoading, setDashboardLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const router = useRouter();
+
+  const cartItemCount = useAtomValue(cartItemCountAtom);
 
   // live search
   useEffect(() => {
@@ -179,7 +187,11 @@ const Header = () => {
                       className="dropdown-menu"
                       aria-labelledby="navbarDropdown"
                     >
-                      <Link className="dropdown-item" href="/dashboard">
+                      <Link
+                        onClick={() => setShowOrderDetails(false)}
+                        className="dropdown-item"
+                        href="/dashboard"
+                      >
                         Dashboard
                       </Link>
                       <a
@@ -198,10 +210,10 @@ const Header = () => {
                 </ul>
               )}
 
-              <a href="" className="btn border">
+              <Link href="/cart" className="btn border">
                 <FaShoppingCart className="text-primary" />
-                <span className="badge">0</span>
-              </a>
+                <span className="badge">{cartItemCount}</span>
+              </Link>
             </div>
           </div>
         </div>

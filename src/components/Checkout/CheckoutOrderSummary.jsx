@@ -1,15 +1,11 @@
-import { cartAtom } from "@/store/frontend/frontendAtom";
+import { orderSummaryAtom } from "@/store/frontend/frontendAtom";
 import { useAtomValue } from "jotai";
 import { useRouter } from "next/router";
 
 const CheckoutOrderSummary = () => {
-  const cartItems = useAtomValue(cartAtom);
+  const orderSummary = useAtomValue(orderSummaryAtom);
 
   const router = useRouter();
-
-  const calculateTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
-  };
 
   const handlePlaceOrder = () => {
     router.push("/payment");
@@ -20,11 +16,11 @@ const CheckoutOrderSummary = () => {
       <h4 className="mb-2">Order Summary</h4>
       <div className="d-flex justify-content-between">
         <p>Items Total</p>
-        <p>tk {calculateTotalPrice()}</p>
+        <p>tk {orderSummary.sub_total}</p>
       </div>
       <div className="d-flex justify-content-between">
         <p>Delivery Fee</p>
-        <p>tk 60</p>
+        <p>tk {orderSummary.shipping_fee}</p>
       </div>
       <div className="d-flex justify-content-between">
         <p>Delivery Discount</p>
@@ -32,13 +28,12 @@ const CheckoutOrderSummary = () => {
       </div>
       <div className="d-flex justify-content-between">
         <p>Total Payment</p>
-        <p>tk {calculateTotalPrice() + 60}</p>
+        <p>tk {orderSummary.total}</p>
       </div>
       <button
         className="btn btn-primary text-white mt-3"
         onClick={handlePlaceOrder}
       >
-        {" "}
         Place Order
       </button>
     </div>

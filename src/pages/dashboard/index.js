@@ -2,9 +2,9 @@ import MyOrders from "@/components/Dashboard/MyOrders";
 import MyQuestions from "@/components/Dashboard/MyQuestions";
 import MyReviews from "@/components/Dashboard/MyReviews";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { logout } from "@/utils/auth";
-import { useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { userAtom } from "@/store/auth/authAtom";
 import MyProfile from "@/components/Dashboard/MyProfile";
 import { axiosAuth } from "@/axiosService";
@@ -13,10 +13,20 @@ import { showOrderDetailsAtom } from "@/store/frontend/frontendAtom";
 
 const Dashboard = () => {
   const router = useRouter();
+
+  const myOrderRef = useRef();
+
   const setUser = useSetAtom(userAtom);
   const [dashboardData, setDashboardData] = useState(null);
 
-  const setShowOrderDetails = useSetAtom(showOrderDetailsAtom);
+  const [showOrderDetails, setShowOrderDetails] = useAtom(showOrderDetailsAtom);
+
+  useEffect(() => {
+    if (showOrderDetails) {
+      myOrderRef.current.click();
+      setShowOrderDetails(true);
+    }
+  }, [showOrderDetails]);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -79,6 +89,7 @@ const Dashboard = () => {
               aria-controls="v-pills-orders"
               aria-selected="false"
               onClick={() => setShowOrderDetails(false)}
+              ref={myOrderRef}
             >
               My Orders
             </a>
@@ -170,7 +181,9 @@ const Dashboard = () => {
               role="tabpanel"
               aria-labelledby="v-pills-reviews-tab"
             >
-              <MyQuestions questions={dashboardData && dashboardData.questions}/>
+              <MyQuestions
+                questions={dashboardData && dashboardData.questions}
+              />
             </div>
             <div
               className="tab-pane fade"

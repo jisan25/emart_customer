@@ -6,6 +6,7 @@ import {
   purchasedOrdersAtom,
 } from "@/store/frontend/frontendAtom";
 import { useAtomValue } from "jotai";
+import Link from "next/link";
 const PurchasedPage = () => {
   const purchasedOrders = useAtomValue(purchasedOrdersAtom);
   const orderSummry = useAtomValue(orderSummaryAtom);
@@ -29,9 +30,9 @@ const PurchasedPage = () => {
           <PurchasedOrderSummary order_summary={orderSummry} />
 
           <div className="d-flex justify-content-center mt-3">
-            <button className="btn btn-primary text-white">
+            <Link href="/" className="btn btn-primary text-white">
               Continue Shopping
-            </button>
+            </Link>
           </div>
         </div>
       </div>

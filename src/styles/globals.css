@@ -676,6 +676,19 @@ pre code {
   }
 }
 
+/* ---- utilities ------- */
+
+.visibility-hidden{
+  visibility: hidden;
+}
+
+.w-15{
+  width: 15% !important;
+}
+
+/* ----- / utilities ------- */
+
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -2555,8 +2568,9 @@ fieldset:disabled a.btn {
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #212529;
-  background-color: #d19c97;
-  border-color: #d19c97;
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  cursor: not-allowed;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
@@ -2598,6 +2612,7 @@ fieldset:disabled a.btn {
   color: #212529;
   background-color: #edf1ff;
   border-color: #edf1ff;
+  cursor: not-allowed;
 }
 
 .btn-secondary:not(:disabled):not(.disabled):active,
@@ -2721,6 +2736,7 @@ fieldset:disabled a.btn {
   color: #212529;
   background-color: #ffc107;
   border-color: #ffc107;
+  cursor: not-allowed;
 }
 
 .btn-warning:not(:disabled):not(.disabled):active,

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEye } from "react-icons/fa";
 import MyOrderDetailsItem from "./order/MyOrderDetailsItem";
-import { useAtom, useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import {
   orderItemAtom,
   showOrderDetailsAtom,
@@ -11,7 +11,7 @@ import { backendUrl } from "@/helpers/CommonHelper";
 
 const MyOrderItem = ({ item }) => {
   const setShowOrderDetails = useSetAtom(showOrderDetailsAtom);
-  const [orderItem, setOrderItem] = useAtom(orderItemAtom);
+  const setOrderItem = useSetAtom(orderItemAtom);
   const handleOrderDetails = async (orderId) => {
     try {
       const { data } = await axiosAuth.get(

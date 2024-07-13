@@ -1,10 +1,14 @@
 import { axiosAuth } from "@/axiosService";
+import { backendUrl } from "@/helpers/CommonHelper";
 import {
   cartAtom,
+  cartDataAtom,
+  cartItemCountAtom,
   orderSummaryAtom,
   purchasedOrdersAtom,
 } from "@/store/frontend/frontendAtom";
-import { useAtomValue, useSetAtom } from "jotai";
+import axios from "axios";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BsCash } from "react-icons/bs";
@@ -12,7 +16,12 @@ import { BsCash } from "react-icons/bs";
 const PaymentPage = () => {
   const [showConfirmOrder, setShowConfirmOrder] = useState(false);
   const setPurchasedOrders = useSetAtom(purchasedOrdersAtom);
-  const setOrderSummary = useSetAtom(orderSummaryAtom);
+  const setCartData = useSetAtom(cartDataAtom);
+  const setCartItemCount = useSetAtom(cartItemCountAtom);
+
+  const [error, setError] = useState(null);
+
+  const [orderSummary, setOrderSummary] = useAtom(orderSummaryAtom);
 
   const handlePaymentMethodClick = () => {
     setShowConfirmOrder(true);
@@ -23,17 +32,13 @@ const PaymentPage = () => {
 
   const router = useRouter();
 
-  const calculateTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
-  };
-
   const handleConfirmOrder = async () => {
     const orderData = {
       cartitems: cartItems.map((item, index) => ({
         id: index + 1,
-        product_id: item.id,
+        product_id: item.product_id,
         delivery_type_id: 1,
-        quantity: 1,
+        quantity: item.quantity,
       })),
     };
 
@@ -42,13 +47,14 @@ const PaymentPage = () => {
       console.log("Order placed successfully:", response.data);
       setPurchasedOrders(response.data.data.orders);
       setOrderSummary(response.data.data.order_summary);
+      setCartData([]);  
+      setCartItemCount(0);
       alert("Order Placed Successfully");
       localStorage.removeItem("cart");
       router.push("/purchased");
     } catch (error) {
       alert("Error");
       console.error("Error placing order:", error);
-      // Handle error response (e.g., show an error message)
     }
   };
 
@@ -56,6 +62,20 @@ const PaymentPage = () => {
     const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(currentCart);
   }, [setCartItems]);
+
+  useEffect(() => {
+    const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+    axios
+      .post(`${backendUrl}/cart`, currentCart)
+      .then(({ data }) => {
+        setOrderSummary(data.data.order_summary);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the cart data!", error);
+        setError(error);
+      });
+  }, []);
+
   return (
     <div className="container-fluid">
       <div className="row px-xl-5 pt-5">
@@ -96,10 +116,11 @@ const PaymentPage = () => {
             <h4 className="mb-2">Order Summary</h4>
             <div className="d-flex flex-end align-center">
               <p className="text-small">
-                Subtotal (1 Items and shipping fee included)
+                Subtotal ({orderSummary.total_items} Items and shipping fee
+                included)
               </p>
-              {calculateTotalPrice}
-              <p>tk {calculateTotalPrice() + 60}</p>
+
+              <p>tk {orderSummary.total}</p>
             </div>
             {/* <div className="d-flex flex-end align-center">
               <p>Cash Payment Fee</p>
@@ -108,7 +129,7 @@ const PaymentPage = () => {
 
             <div className="d-flex flex-end align-center">
               <p>Total Amount</p>
-              <p>tk {calculateTotalPrice() + 60}</p>
+              <p>tk {orderSummary.total}</p>
             </div>
           </div>
         </div>

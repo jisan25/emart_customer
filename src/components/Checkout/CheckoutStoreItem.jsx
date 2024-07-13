@@ -1,35 +1,40 @@
-import { backendImageUrl } from "@/helpers/CommonHelper";
-import { FaRegTrashAlt } from "react-icons/fa";
+import CheckoutProductItem from "./checkoutProductItem";
+
 const CheckoutStoreItem = ({ item }) => {
+  const calculateTotalPrice = (item) => {
+    return item.products.reduce((total, item) => {
+      return total + item.price * item.quantity + item.delivery_fee;
+    }, 0);
+  };
+
+  const calculateTotalItems = (item) => {
+    return item.products.reduce((total, item) => {
+      return total + item.quantity;
+    }, 0);
+  };
+
   return (
-    <div className="row mb-3">
-      <div className="col-md-6">
-        <div className="d-flex gap-2">
-          <img
-            src={backendImageUrl + "/" + item.image}
-            alt=""
-            className="image-small"
-          />
-          <div>
-            <p className="text-dark">{item.product_name}</p>
-            <p>No Brand, Size: XXL, Color Family: White</p>
-          </div>
-        </div>
+    <div className="mb-3">
+      <p className="text-primary text-medium px-3 mb-3">
+        {item.products[0].store.store_name}
+      </p>
+
+      {item.products.map((product) => (
+        <CheckoutProductItem product={product} />
+      ))}
+
+      <hr />
+      <div className="border-primary-1 p-2 px-3 w-25">
+        <h4 className="text-lead">Standard Delivery | tk 65</h4>
+        <p className="text-small">Receive by 11 Jul - 14 Jul</p>
       </div>
-      <div className="col-md-6">
-        <div className="d-flex justify-content-between align-items-center">
-          <div className="d-flex gap-4">
-            <p>Qty:1</p>
-            <p>
-              <FaRegTrashAlt className="cursor-pointer" />
-            </p>
-          </div>
-          <div className="d-flex gap-4">
-            <span className="badge badge-secondary h-2 px-2 py-1">
-              <span className="text-line-through">tk 990</span> -60%
-            </span>
-            <p>tk {item.price}</p>
-          </div>
+      <div className="d-flex justify-content-end">
+        <div className="d-flex flex-column align-items-end">
+          <p>
+            {calculateTotalItems(item)} item(s). Subtotal: tk{" "}
+            {calculateTotalPrice(item)}
+          </p>
+          {/* <p>Saved tk95</p> */}
         </div>
       </div>
     </div>
